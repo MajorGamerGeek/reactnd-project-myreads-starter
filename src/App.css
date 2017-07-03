@@ -54,7 +54,7 @@ body, .app {
   height: 50px;
   border-radius: 50%;
   background: #2e7d32;
-  background-image: url('./icons/add.svg');
+  background-image: url('./icons/search.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 28px;
@@ -101,6 +101,18 @@ body, .app {
 
 .search-books-results {
   padding: 80px 10px 20px;
+}
+
+.showing-books {
+  text-align: center;
+  margin: 20px 0;
+}
+.showing-books button {
+  color: blue;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: inherit;
 }
 
 /* books grid */
