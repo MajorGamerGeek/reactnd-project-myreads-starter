@@ -17,10 +17,24 @@ class BooksApp extends React.Component {
     });
   };
 
-  updateBook(book, shelf) {
-    console.log(book + shelf);
-    BooksAPI.update(book, shelf).then((booksInShelfs) => {
-      // Todo: Add logic to update the books in what shelfs
+  updateBook = (book, shelf) => {    
+    let updatedBooks = [];
+
+    if(this.state.books.filter((b) => (b.id === book.id)).length > 0) {
+      updatedBooks = this.state.books.map(function(b) {
+        if (b.id === book.id) {
+          b.shelf = shelf;
+        }
+        return b;
+      });      
+    } else {
+      book.shelf = shelf;
+      updatedBooks = this.state.books.concat( [ book ]);
+    }
+
+    this.setState({ books: updatedBooks });
+
+    BooksAPI.update({id: book.id}, shelf).then((booksInShelfs) => {
       console.log(booksInShelfs);
     });
   }

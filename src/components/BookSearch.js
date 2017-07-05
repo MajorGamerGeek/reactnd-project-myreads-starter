@@ -25,7 +25,6 @@ class BookSearch extends Component {
 
 		return (
 			<div className="search-books">
-				{books && books.map((book) => (console.log(book)))}
 				<div className="search-books-bar">
 					<Link to="/" className="close-search">Close</Link>
 					<div className="search-books-input-wrapper">

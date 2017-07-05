@@ -18,7 +18,7 @@ class BookShelf extends Component {
 				<h2 className="bookshelf-title">{shelfName}</h2>
 				<div className="bookshelf-books">
 					<ol className="books-grid">
-						{books.filter(book => book.shelf === shelfType).map((book) => (<Book key={book.id} book={book} onUpdateBook={onUpdateBook}/>))}
+						{books.filter((book) => book.shelf === shelfType).map((book) => (<Book key={book.id} book={book} onUpdateBook={onUpdateBook}/>))}
 					</ol>
 				</div>
 			</div>
