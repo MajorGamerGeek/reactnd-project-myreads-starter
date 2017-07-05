@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
-import BookList from './BookList';
-import BookSearch from './BookSearch';
-import * as BooksAPI from './BooksAPI';
+import BookList from './components/BookList';
+import BookSearch from './components/BookSearch';
+import * as BooksAPI from './utils/BooksAPI';
 import './App.css';
 
 class BooksApp extends React.Component {
@@ -17,11 +17,11 @@ class BooksApp extends React.Component {
     });
   };
 
-  updateBook(book) {
-    BooksAPI.update(book).then(book => {
-      this.setState(state => ({
-        books: state.books
-      }));
+  updateBook(book, shelf) {
+    console.log(book + shelf);
+    BooksAPI.update(book, shelf).then((booksInShelfs) => {
+      // Todo: Add logic to update the books in what shelfs
+      console.log(booksInShelfs);
     });
   }
 
