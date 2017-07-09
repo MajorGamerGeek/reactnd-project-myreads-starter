@@ -46,6 +46,14 @@ class BooksApp extends React.Component {
           this.setState({ searchResults: [] });
         }
         else {
+          for (let resultBook of searchResults) {
+            for (let book of this.state.books) {
+              if (resultBook.id === book.id) {
+                resultBook.shelf = book.shelf;
+              }
+            }
+          }
+        
           this.setState({ searchResults });
         }
       });
@@ -70,7 +78,7 @@ class BooksApp extends React.Component {
             onSearchBooks={(query) => {
               this.searchBooks(query);
             }}
-            books={this.state.searchResults}
+            searchResults={this.state.searchResults}
           />
         )} />
       </div>

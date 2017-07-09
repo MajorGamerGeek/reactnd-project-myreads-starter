@@ -5,7 +5,7 @@ import Book from './Book';
 
 class BookSearch extends Component {
 	static propTypes = {
-		books: PropTypes.array.isRequired,
+		searchResults: PropTypes.array.isRequired,
 		onUpdateBook: PropTypes.func.isRequired,
 		onSearchBooks: PropTypes.func.isRequired
 	}
@@ -20,7 +20,7 @@ class BookSearch extends Component {
 	}
 
 	render() {
-		const { books, onUpdateBook } = this.props;
+		const { searchResults, onUpdateBook } = this.props;
 		const { query } = this.state;
 
 		return (
@@ -33,7 +33,7 @@ class BookSearch extends Component {
 				</div>
 				<div className="search-books-results">
 					<ol className="books-grid">
-						{books.map((book) => (<Book key={book.id} book={book} onUpdateBook={onUpdateBook} />))}
+						{searchResults.map((book) => (<Book key={book.id} book={book} onUpdateBook={onUpdateBook} />))}
 					</ol>
 				</div>
 			</div>
