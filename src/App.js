@@ -34,9 +34,7 @@ class BooksApp extends React.Component {
 
     this.setState({ books: updatedBooks });
 
-    BooksAPI.update({id: book.id}, shelf).then((booksInShelfs) => {
-      console.log(booksInShelfs);
-    });
+    BooksAPI.update({id: book.id}, shelf);
   }
 
   searchBooks(query) {
