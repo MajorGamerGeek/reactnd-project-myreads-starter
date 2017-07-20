@@ -21,7 +21,7 @@ class BooksApp extends React.Component {
     let updatedBooks = [];
 
     if(this.state.books.filter((b) => (b.id === book.id)).length > 0) {
-      updatedBooks = this.state.books.map(function(b) {
+      updatedBooks = this.state.books.map((b) => {
         if (b.id === book.id) {
           b.shelf = shelf;
         }

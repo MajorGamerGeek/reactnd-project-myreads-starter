@@ -36,7 +36,7 @@ class BookSearch extends Component {
 				</div>
 				<div className="search-books-results">
 					<ol className="books-grid">
-						{searchResults.map((book) => (<Book key={book.id} book={book} onUpdateBook={onUpdateBook} />))}
+						{query === '' ? null : searchResults.map((book) => (<Book key={book.id} book={book} onUpdateBook={onUpdateBook} />))}
 					</ol>
 				</div>
 			</div>
