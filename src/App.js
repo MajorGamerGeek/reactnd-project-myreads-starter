@@ -45,11 +45,11 @@ class BooksApp extends React.Component {
         }
         else {
           for (let resultBook of searchResults) {
-            for (let book of this.state.books) {
-              if (resultBook.id === book.id) {
-                resultBook.shelf = book.shelf;
-              }
-            }
+            var bookMatch = this.state.books.filter(book => (resultBook.id === book.id));
+            
+            if(bookMatch[0] !== undefined) {
+               resultBook.shelf = bookMatch[0].shelf;
+            }           
           }
         
           this.setState({ searchResults });
