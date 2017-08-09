@@ -6,8 +6,7 @@ import BookShelf from './BookShelf';
 class BookList extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
-    onUpdateBook: PropTypes.func.isRequired,
-    clearSearchResults: PropTypes.func.isRequired
+    onUpdateBook: PropTypes.func.isRequired
   }
 
   render() {
@@ -27,7 +26,7 @@ class BookList extends Component {
         </div>
         <div>
           <div className="open-search">
-            <Link to="/search" onClick={this.props.clearSearchResults}>Add a book</Link>
+            <Link to="/search">Add a book</Link>
           </div>
         </div>
       </div>
