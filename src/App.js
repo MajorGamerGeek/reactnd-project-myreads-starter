@@ -7,8 +7,7 @@ import './App.css';
 
 class BooksApp extends React.Component {
   state = {
-    books: [],
-    searchResults: []
+    books: []
   };
 
   componentDidMount() {
@@ -17,52 +16,18 @@ class BooksApp extends React.Component {
     });
   };
 
-  updateBook = (book, shelf) => {    
-    let updatedBooks = [];
+  updateBook = (book, shelf) => {
+    if (book.shelf !== shelf) {
+      BooksAPI.update(book.id, shelf).then(() => {
+        book.shelf = shelf
 
-    if(this.state.books.filter((b) => (b.id === book.id)).length > 0) {
-      updatedBooks = this.state.books.map((b) => {
-        if (b.id === book.id) {
-          b.shelf = shelf;
-        }
-        return b;
-      });      
-    } else {
-      book.shelf = shelf;
-      updatedBooks = this.state.books.concat( [ book ]);
-    }
-
-    this.setState({ books: updatedBooks });
-
-    BooksAPI.update({id: book.id}, shelf);
-  }
-
-  searchBooks(query) {
-    if (query.length > 0) {
-      BooksAPI.search(query, 20).then((searchResults) => {
-        if (searchResults === undefined || searchResults.error) {
-          this.setState({ searchResults: [] });
-        }
-        else {
-          for (let resultBook of searchResults) {
-            var bookMatch = this.state.books.filter(book => (resultBook.id === book.id));
-            
-            if(bookMatch[0] !== undefined) {
-               resultBook.shelf = bookMatch[0].shelf;
-            }           
-          }
-        
-          this.setState({ searchResults });
-        }
+        // Filter out the book and append it to the end of the list
+        // so it appears at the end of whatever shelf it was added to.
+        this.setState(state => ({
+          books: state.books.filter(b => b.id !== book.id).concat([ book ])
+        }));
       });
     }
-    else {
-      this.setState({ searchResults: [] });
-    }
-  }
-
-  clearSearchResults() {
-    this.setState({ searchResults: [] });
   }
 
   render() {
@@ -72,18 +37,12 @@ class BooksApp extends React.Component {
           <BookList
             onUpdateBook={this.updateBook}
             books={this.state.books}
-            clearSearchResults={() => {
-              this.clearSearchResults();
-            }}
           />
         )} />
         <Route path="/search" render={() => (
-          <BookSearch     
+          <BookSearch 
             onUpdateBook={this.updateBook}
-            onSearchBooks={(query) => {
-              this.searchBooks(query);
-            }}
-            searchResults={this.state.searchResults}
+            books={this.state.books}
           />
         )} />
       </div>
