@@ -1,13 +1,15 @@
 {
   "dependencies": {
-    "gh-pages": "^1.0.0",
-    "prop-types": "^15.5.10",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-router-dom": "^4.1.1"
+    "gh-pages": "^3.1.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "typescript": "^3.9.7"
   },
   "devDependencies": {
-    "react-scripts": "0.9.5"
+    "react-scripts": "3.4.1",
+    "yargs-parser": "^18.1.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -17,5 +19,17 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://majorgamergeek.github.io/reactnd-project-myreads-starter"
+  "homepage": "https://majorgamergeek.github.io/reactnd-project-myreads-starter",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
